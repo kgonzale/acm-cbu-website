@@ -9,9 +9,9 @@ let adjectives = [
 ];
 
 let currentThing = 1
-
-const getAdj = document.getElementById("adjectives");
-getAdj.style.transition = "250ms";
+document.addEventListener('DOMContentLoaded', () => {
+const getAdj = document.getElementById("currently-displayed");
+getAdj.style.transition = "all 0.3s";
 getAdj.style.textContent = adjectives[0];
 
 function newDisplay() {
@@ -27,7 +27,8 @@ function newDisplay() {
   }, 500)
 
   setTimeout(newDisplay, 3500)
-}
+} 
 
-shuffle(getAdj);
-newDisplay();
+
+shuffle(adjectives);
+newDisplay();});
