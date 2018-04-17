@@ -1,6 +1,6 @@
 //credit https://github.com/kingdaro
 
-import { shuffle } from "./js/slider";
+import { shuffle } from "./slider";
 
 let adjectives = [
     'create code',
