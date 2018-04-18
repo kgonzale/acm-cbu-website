@@ -77,7 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({11:[function(require,module,exports) {
+})({5:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -96,38 +96,40 @@ function shuffle(array) {
     }
     return array;
 }
-},{}],12:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 'use strict';
 
 var _slider = require('./slider');
 
-var adjectives = ['create code', 'think logically', 'learn new languages']; //credit https://github.com/kingdaro
+var adjectives = ['create code', 'think logically', 'learn new languages']; //credit to kingdaro
 
 var currentThing = 1;
+
 document.addEventListener('DOMContentLoaded', function () {
-    var getAdj = document.getElementById("currently-displayed");
-    getAdj.style.transition = "all 0.3s";
-    getAdj.style.textContent = adjectives[0];
+  /*Grabbing element id from html file*/
+  var getAdj = document.getElementById("currently-displayed");
+  getAdj.style.transition = "all 0.3s";
+  getAdj.textContent = adjectives[0];
 
-    function newDisplay() {
-        getAdj.style.opacity = 0;
-        getAdj.style.transform = "translateY(10px)";
+  function newDisplay() {
+    getAdj.style.opacity = 0;
+    getAdj.style.transform = "translateY(10px)";
 
-        setTimeout(function () {
-            getAdj.textContent = getAdj[currentThing];
-            getAdj.style.opacity = 1;
-            getAdj.style.transform = "translateY(0px)";
+    setTimeout(function () {
+      getAdj.textContent = adjectives[currentThing];
+      getAdj.style.opacity = 1;
+      getAdj.style.transform = "translateY(0px)";
 
-            currentThing = (currentThing + 1) % getAdj.length;
-        }, 500);
+      currentThing = (currentThing + 1) % adjectives.length;
+    }, 500);
 
-        setTimeout(newDisplay, 3500);
-    }
+    setTimeout(newDisplay, 3500);
+  }
 
-    (0, _slider.shuffle)(adjectives);
-    newDisplay();
+  (0, _slider.shuffle)(adjectives);
+  newDisplay();
 });
-},{"./slider":11}],26:[function(require,module,exports) {
+},{"./slider":5}],15:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -157,7 +159,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55727' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58568' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -296,5 +298,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[26,12])
+},{}]},{},[15,6])
 //# sourceMappingURL=/transition.ff9955e7.map

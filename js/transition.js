@@ -1,4 +1,4 @@
-//credit https://github.com/kingdaro
+//credit to kingdaro
 
 import { shuffle } from "./slider";
 
@@ -11,13 +11,14 @@ let adjectives = [
 let currentThing = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
+/*Grabbing element id from html file*/
 const getAdj = document.getElementById("currently-displayed");
 getAdj.style.transition = "all 0.3s";
 getAdj.textContent = adjectives[0];
 
 function newDisplay() {
-    getAdj.style.opacity = 0;
-    getAdj.style.transform = "translateY(10px)";
+  getAdj.style.opacity = 0;
+  getAdj.style.transform = "translateY(10px)";
 
   setTimeout(() => {
     getAdj.textContent = adjectives[currentThing];
