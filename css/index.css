@@ -1,6 +1,6 @@
 body {
     position: relative;
-    background-color: #edf7ff;
+    background-image: url('./background.png');
 }
    
 html, body {
