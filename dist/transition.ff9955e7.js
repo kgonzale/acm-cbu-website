@@ -103,33 +103,32 @@ var _slider = require('./slider');
 
 var adjectives = ['create code', 'think logically', 'learn new languages']; //credit to kingdaro
 
-var currentThing = 1;
+var currentItem = 1;
 
 document.addEventListener('DOMContentLoaded', function () {
-  /*Grabbing element id from html file*/
   var getAdj = document.getElementById("currently-displayed");
   getAdj.style.transition = "all 0.3s";
   getAdj.textContent = adjectives[0];
 
   function newDisplay() {
-    getAdj.style.opacity = 0;
-    getAdj.style.transform = "translateY(10px)";
+    getAdj.style.opacity = 0; //smooth transition
+    getAdj.style.transform = "translateY(10px)"; //y direction
 
     setTimeout(function () {
-      getAdj.textContent = adjectives[currentThing];
-      getAdj.style.opacity = 1;
-      getAdj.style.transform = "translateY(0px)";
+      getAdj.textContent = adjectives[currentItem];
+      getAdj.style.opacity = 1; //make text appear
+      getAdj.style.transform = "translateY(0px)"; //y direction
 
-      currentThing = (currentThing + 1) % adjectives.length;
+      currentItem = (currentItem + 1) % adjectives.length;
     }, 500);
 
     setTimeout(newDisplay, 3500);
   }
 
-  (0, _slider.shuffle)(adjectives);
   newDisplay();
+  (0, _slider.shuffle)(adjectives);
 });
-},{"./slider":5}],15:[function(require,module,exports) {
+},{"./slider":5}],31:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -298,5 +297,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[15,6])
+},{}]},{},[31,6])
 //# sourceMappingURL=/transition.ff9955e7.map

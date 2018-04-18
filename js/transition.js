@@ -8,30 +8,28 @@ let adjectives = [
     'learn new languages'
 ];
 
-let currentThing = 1;
+let currentItem = 1; 
 
 document.addEventListener('DOMContentLoaded', () => {
-/*Grabbing element id from html file*/
 const getAdj = document.getElementById("currently-displayed");
 getAdj.style.transition = "all 0.3s";
 getAdj.textContent = adjectives[0];
 
 function newDisplay() {
-  getAdj.style.opacity = 0;
-  getAdj.style.transform = "translateY(10px)";
+  getAdj.style.opacity = 0; //smooth transition
+  getAdj.style.transform = "translateY(10px)"; //y direction
 
   setTimeout(() => {
-    getAdj.textContent = adjectives[currentThing];
-    getAdj.style.opacity = 1;
-    getAdj.style.transform = "translateY(0px)"
+    getAdj.textContent = adjectives[currentItem];
+    getAdj.style.opacity = 1; //make text appear
+    getAdj.style.transform = "translateY(0px)"; //y direction
 
-    currentThing = (currentThing + 1) % adjectives.length
-  }, 500)
+    currentItem = (currentItem + 1) % adjectives.length
+  }, 500);
 
-  setTimeout(newDisplay, 3500)
+  setTimeout(newDisplay, 3500);
 } 
 
-
-shuffle(adjectives);
 newDisplay();
+shuffle(adjectives);
 });
