@@ -101,7 +101,7 @@ function shuffle(array) {
 
 var _slider = require('./slider');
 
-var adjectives = ['create code', 'think logically', 'learn new languages']; //credit to kingdaro
+var adjectives = ['eat shit', 'learn shit', 'pray to shit']; //credit to kingdaro
 
 var currentItem = 1;
 
