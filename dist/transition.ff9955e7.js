@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
   newDisplay();
   (0, _slider.shuffle)(adjectives);
 });
-},{"./slider":5}],31:[function(require,module,exports) {
+},{"./slider":5}],19:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -158,7 +158,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58568' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50550' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -297,5 +297,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[31,6])
+},{}]},{},[19,6])
 //# sourceMappingURL=/transition.ff9955e7.map

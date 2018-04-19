@@ -77,7 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({11:[function(require,module,exports) {
+})({5:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -96,14 +96,14 @@ function shuffle(array) {
     }
     return array;
 }
-},{}],12:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 'use strict';
 
 var _slider = require('./slider');
 
-var adjectives = ['create code', 'think logically', 'learn new languages']; //credit https://github.com/kingdaro
+var adjectives = ['create code', 'think logically', 'learn new languages']; //credit to kingdaro
 
-var currentThing = 1;
+var currentItem = 1;
 
 document.addEventListener('DOMContentLoaded', function () {
   var getAdj = document.getElementById("currently-displayed");
@@ -111,24 +111,99 @@ document.addEventListener('DOMContentLoaded', function () {
   getAdj.textContent = adjectives[0];
 
   function newDisplay() {
-    getAdj.style.opacity = 0;
-    getAdj.style.transform = "translateY(10px)";
+    getAdj.style.opacity = 0; //smooth transition
+    getAdj.style.transform = "translateY(10px)"; //y direction
 
     setTimeout(function () {
-      getAdj.textContent = adjectives[currentThing];
-      getAdj.style.opacity = 1;
-      getAdj.style.transform = "translateY(0px)";
+      getAdj.textContent = adjectives[currentItem];
+      getAdj.style.opacity = 1; //make text appear
+      getAdj.style.transform = "translateY(0px)"; //y direction
 
-      currentThing = (currentThing + 1) % adjectives.length;
+      currentItem = (currentItem + 1) % adjectives.length;
     }, 500);
 
     setTimeout(newDisplay, 3500);
   }
 
-  (0, _slider.shuffle)(adjectives);
   newDisplay();
+  (0, _slider.shuffle)(adjectives);
 });
-},{"./slider":11}],25:[function(require,module,exports) {
+},{"./slider":5}],10:[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],8:[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":10}],7:[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"./background.jpg":[["background.ac66c9b5.jpg",9],9],"_css_loader":8}],4:[function(require,module,exports) {
+"use strict";
+
+require("./slider.js");
+
+require("./transition.js");
+
+require("../css/index.css");
+},{"./slider.js":5,"./transition.js":6,"../css/index.css":7}],11:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -158,7 +233,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '45815' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51472' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -297,5 +372,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[25,12])
-//# sourceMappingURL=/transition.77eae28c.map
+},{}]},{},[11,4])
+//# sourceMappingURL=/js.1f336fca.map
