@@ -3,9 +3,9 @@
 import { shuffle } from "./slider";
 
 let adjectives = [
-    'eat shit',
-    'learn shit',
-    'pray to shit'
+    'are a community',
+    'engineer ideas',
+    'solve problems'
 ];
 
 let currentItem = 1; 
