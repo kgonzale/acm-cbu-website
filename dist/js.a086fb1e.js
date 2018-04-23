@@ -203,7 +203,7 @@ require("./slider.js");
 require("./transition.js");
 
 require("../css/index.css");
-},{"./slider.js":6,"./transition.js":7,"../css/index.css":8}],23:[function(require,module,exports) {
+},{"./slider.js":6,"./transition.js":7,"../css/index.css":8}],12:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -233,7 +233,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '41425' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '39009' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -372,5 +372,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[23,5])
+},{}]},{},[12,5])
 //# sourceMappingURL=/js.a086fb1e.map
