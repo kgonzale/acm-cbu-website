@@ -77,58 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({6:[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.shuffle = shuffle;
-//https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
-
-function shuffle(array) {
-    var j, x, i;
-    for (i = array.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = array[i];
-        array[i] = array[j];
-        array[j] = x;
-    }
-    return array;
-}
-},{}],7:[function(require,module,exports) {
-'use strict';
-
-var _slider = require('./slider');
-
-var adjectives = ['are a community', 'engineer ideas', 'solve problems']; //credit to kingdaro
-
-var currentItem = 1;
-
-document.addEventListener('DOMContentLoaded', function () {
-  var getAdj = document.getElementById("currently-displayed");
-  getAdj.style.transition = "all 0.3s";
-  getAdj.textContent = adjectives[0];
-
-  function newDisplay() {
-    getAdj.style.opacity = 0; //smooth transition
-    getAdj.style.transform = "translateY(10px)"; //y direction
-
-    setTimeout(function () {
-      getAdj.textContent = adjectives[currentItem];
-      getAdj.style.opacity = 1; //make text appear
-      getAdj.style.transform = "translateY(0px)"; //y direction
-
-      currentItem = (currentItem + 1) % adjectives.length;
-    }, 500);
-
-    setTimeout(newDisplay, 3500);
-  }
-
-  newDisplay();
-  (0, _slider.shuffle)(adjectives);
-});
-},{"./slider":6}],11:[function(require,module,exports) {
+})({11:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -195,15 +144,7 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./background.jpg":[["background.0e56aec3.jpg",10],10],"_css_loader":9}],5:[function(require,module,exports) {
-"use strict";
-
-require("./slider.js");
-
-require("./transition.js");
-
-require("../css/index.css");
-},{"./slider.js":6,"./transition.js":7,"../css/index.css":8}],23:[function(require,module,exports) {
+},{"./background.jpg":10,"_css_loader":9}],21:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -372,5 +313,87 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[23,5])
-//# sourceMappingURL=/js.a086fb1e.map
+},{}],22:[function(require,module,exports) {
+var getBundleURL = require('./bundle-url').getBundleURL;
+
+function loadBundlesLazy(bundles) {
+  if (!Array.isArray(bundles)) {
+    bundles = [bundles];
+  }
+
+  var id = bundles[bundles.length - 1];
+
+  try {
+    return Promise.resolve(require(id));
+  } catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+      return new LazyPromise(function (resolve, reject) {
+        loadBundles(bundles).then(resolve, reject);
+      });
+    }
+
+    throw err;
+  }
+}
+
+function loadBundles(bundles) {
+  var id = bundles[bundles.length - 1];
+
+  return Promise.all(bundles.slice(0, -1).map(loadBundle)).then(function () {
+    return require(id);
+  });
+}
+
+var bundleLoaders = {};
+function registerBundleLoader(type, loader) {
+  bundleLoaders[type] = loader;
+}
+
+module.exports = exports = loadBundlesLazy;
+exports.load = loadBundles;
+exports.register = registerBundleLoader;
+
+var bundles = {};
+function loadBundle(bundle) {
+  var id;
+  if (Array.isArray(bundle)) {
+    id = bundle[1];
+    bundle = bundle[0];
+  }
+
+  if (bundles[bundle]) {
+    return bundles[bundle];
+  }
+
+  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
+  var bundleLoader = bundleLoaders[type];
+  if (bundleLoader) {
+    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
+      if (resolved) {
+        module.bundle.modules[id] = [function (require, module) {
+          module.exports = resolved;
+        }, {}];
+      }
+
+      return resolved;
+    });
+  }
+}
+
+function LazyPromise(executor) {
+  this.executor = executor;
+  this.promise = null;
+}
+
+LazyPromise.prototype.then = function (onSuccess, onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.then(onSuccess, onError);
+};
+
+LazyPromise.prototype.catch = function (onError) {
+  if (this.promise === null) this.promise = new Promise(this.executor);
+  return this.promise.catch(onError);
+};
+},{"./bundle-url":11}],0:[function(require,module,exports) {
+var b=require(22);b.load([["background.0e56aec3.jpg",10]]);
+},{}]},{},[21,0])

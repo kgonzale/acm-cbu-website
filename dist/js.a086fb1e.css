@@ -1,6 +1,6 @@
-body {
+.background {
     position: relative;
-    background-image: url('background.0e56aec3.jpg');
+    background-image: url(background.0e56aec3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
