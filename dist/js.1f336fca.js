@@ -203,7 +203,7 @@ require("./slider.js");
 require("./transition.js");
 
 require("../css/index.css");
-},{"./slider.js":6,"./transition.js":7,"../css/index.css":8}],11:[function(require,module,exports) {
+},{"./slider.js":6,"./transition.js":7,"../css/index.css":8}],19:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -372,5 +372,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[11,5])
+},{}]},{},[19,5])
 //# sourceMappingURL=/js.1f336fca.map
