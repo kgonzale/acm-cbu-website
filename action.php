@@ -1,9 +1,8 @@
+<!DOCTYPE>
 <html>
- <head>
-  <title>PHP Test</title>
- </head>
- <body>
- Hi <?php echo htmlspecialchars($_POST['fName']); ?>.
- </body>
+    <body>
+        <?php
+            echo "<h2>Welcome to Wikitechy PHP Tutorial Point!...</h2>";
+        ?>
+    </body>
 </html>
-

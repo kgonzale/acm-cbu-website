@@ -77,58 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({6:[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.shuffle = shuffle;
-//https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array/6274381#6274381
-
-function shuffle(array) {
-    var j, x, i;
-    for (i = array.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = array[i];
-        array[i] = array[j];
-        array[j] = x;
-    }
-    return array;
-}
-},{}],7:[function(require,module,exports) {
-'use strict';
-
-var _slider = require('./slider');
-
-var adjectives = ['are a community', 'engineer ideas', 'solve problems']; //credit to kingdaro
-
-var currentItem = 1;
-
-document.addEventListener('DOMContentLoaded', function () {
-  var getAdj = document.getElementById("currently-displayed");
-  getAdj.style.transition = "all 0.3s";
-  getAdj.textContent = adjectives[0];
-
-  function newDisplay() {
-    getAdj.style.opacity = 0; //smooth transition
-    getAdj.style.transform = "translateY(10px)"; //y direction
-
-    setTimeout(function () {
-      getAdj.textContent = adjectives[currentItem];
-      getAdj.style.opacity = 1; //make text appear
-      getAdj.style.transform = "translateY(0px)"; //y direction
-
-      currentItem = (currentItem + 1) % adjectives.length;
-    }, 500);
-
-    setTimeout(newDisplay, 3500);
-  }
-
-  newDisplay();
-  (0, _slider.shuffle)(adjectives);
-});
-},{"./slider":6}],11:[function(require,module,exports) {
+})({9:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -158,7 +107,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],9:[function(require,module,exports) {
+},{}],8:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -189,21 +138,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":11}],8:[function(require,module,exports) {
+},{"./bundle-url":9}],4:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./background.jpg":[["background.0e56aec3.jpg",10],10],"_css_loader":9}],5:[function(require,module,exports) {
-"use strict";
-
-require("./slider.js");
-
-require("./transition.js");
-
-require("../css/index.css");
-},{"./slider.js":6,"./transition.js":7,"../css/index.css":8}],12:[function(require,module,exports) {
+},{"_css_loader":8}],10:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -233,7 +174,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '39009' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62402' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -372,5 +313,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[12,5])
-//# sourceMappingURL=/js.a086fb1e.map
+},{}]},{},[10])

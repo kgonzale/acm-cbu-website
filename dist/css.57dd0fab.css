@@ -1,6 +1,5 @@
 .background {
     position: relative;
-    background-image: url('background.0e56aec3.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -61,4 +60,9 @@ h1 {
     opacity: .85;
     margin-left: 20px;
     text-align: center;
+    color: black;
 }
+
+.input:invalid {
+    border: 2px dashed red;
+  }
