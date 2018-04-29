@@ -1,8 +1,8 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
     <body>
         <?php
-            echo "<h2>Welcome to Wikitechy PHP Tutorial Point!...</h2>";
+            echo $_POST['fName']. " - " .$_POST['lName']. " - " .$_POST['email']. " - " .$_POST['commend'];
         ?>
     </body>
-</html>
+</html> 
