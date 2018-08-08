@@ -4,8 +4,10 @@ import { shuffle } from "./slider";
 
 let adjectives = [
     'are a community',
-    'engineer ideas',
-    'solve problems'
+    'solve problems',
+    'are engineers',
+    'are developers',
+    'drink lots of coffee'
 ];
 
 let currentItem = 1; 
